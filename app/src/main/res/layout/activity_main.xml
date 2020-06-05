@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="9dp"
+        android:layout_marginTop="-2dp"
+        android:progress="20"
+        android:visibility="gone" />
+
+    <WebView
+        android:id="@+id/mywebview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        />
+
+    <RelativeLayout
+        android:id="@+id/relativelaot"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/noconnectionlogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/nonetwall"
+            />
+
+        <TextView
+            android:id="@+id/txtnoconnection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/noconnectionlogo"
+            android:gravity="center"
+            android:text="No Internet Connection"
+            android:textSize="26sp" />
+
+        <Button
+            android:id="@+id/btnnoconnection"
+            android:layout_width="140dp"
+            android:layout_height="55dp"
+            android:layout_below="@+id/txtnoconnection"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:background="#FF5722"
+            android:text="Retry"
+            android:textColor="#ffffff"
+            android:textSize="22sp" />
+
+
+    </RelativeLayout>
+
+
+
+
+</LinearLayout>
