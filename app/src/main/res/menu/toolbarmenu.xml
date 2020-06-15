@@ -15,7 +15,7 @@
             android:title="Reload"
             app:showAsAction="always" />
         <item
-            android:id="@+id/navnext"
+            android:id="@+id/navshare"
             app:showAsAction="always"
             android:icon="@drawable/share"
             android:title="Share"

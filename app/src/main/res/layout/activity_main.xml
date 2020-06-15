@@ -29,13 +29,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <pl.droidsonroids.gif.GifImageView
+        <ImageView
             android:id="@+id/noconnectionlogo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/nonetwall"
-            />
-
+            android:layout_width="match_parent"
+            android:layout_height="324dp"
+            android:src="@drawable/illustration" />
         <TextView
             android:id="@+id/txtnoconnection"
             android:layout_width="match_parent"

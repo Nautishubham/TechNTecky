@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "962021816810",
+    "firebase_url": "https://techntecky-1f5bd.firebaseio.com",
+    "project_id": "techntecky-1f5bd",
+    "storage_bucket": "techntecky-1f5bd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:962021816810:android:0f3b7002eb56b2a46a5a93",
+        "android_client_info": {
+          "package_name": "com.techno.techntecky"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "962021816810-039db1fpo2fugegvqcmha2uee9375qmb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.techno.techntecky",
+            "certificate_hash": "6df64a1611f91943158904bbb7c9b53a83d29a9e"
+          }
+        },
+        {
+          "client_id": "962021816810-1ailmru68omtt23l5fsruopie0at130l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCi7lBczrnLomBmsJgpris_nKK9iS4eC1I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "962021816810-1ailmru68omtt23l5fsruopie0at130l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

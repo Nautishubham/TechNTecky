@@ -31,6 +31,10 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.techno.techntecky.services.notificationservice;
+
+import hotchemi.android.rate.AppRate;
+
 public class MainActivity extends AppCompatActivity {
     WebView webView;
     private String weburl = "https://linkedgyan.blogspot.com/";
@@ -45,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
+        startService( new Intent( this, notificationservice.class )) ;
         webView = findViewById(R.id.mywebview);
         progressBarweb = findViewById(R.id.progressbar);
         progressDialog = new ProgressDialog(this);
@@ -101,6 +106,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+    @Override
+    protected void onStop () {
+        super .onStop() ;
+        startService( new Intent( this, notificationservice.class )) ;
+    }
+    public void closeApp (View view) {
+        finish() ;
     }
 
     @Override
@@ -159,20 +172,25 @@ public class MainActivity extends AppCompatActivity {
                 onBackPressed();
                 break;
 
-            case R.id.navnext:
-                Intent myintent=new Intent(Intent.ACTION_SEND);
-                myintent.setType("text/plain");
-                String shareBody="Your Body here";
-                String ShareSub="Your subject here";
-                myintent.putExtra(Intent.EXTRA_SUBJECT,ShareSub);
-                myintent.putExtra(Intent.EXTRA_TEXT,shareBody);
-                startActivity(Intent.createChooser(myintent,"Share using"));
-                break;
             case  R.id.navRate:
-                Intent intent = new Intent(MainActivity.this, rating.class);
-               startActivity(intent);    break;
-            case  R.id.navdevloper:Toast.makeText(this, "You can mail me on shubhamnautiyal64@gmail.com", Toast.LENGTH_LONG).show();
-                Toast.makeText(this, "You can contact me on +919897512806", Toast.LENGTH_LONG).show();
+                AppRate.with(this).showRateDialog(this);
+                break;
+            case  R.id.navdevloper:
+                Toast.makeText(this, "You can mail me on shubhamnautiyal64@gmail.com", Toast.LENGTH_LONG).show();
+                break;
+            case  R.id.navshare:
+                try{
+                    Intent intent=new Intent(Intent.ACTION_SEND);
+                    intent.setType("text/plain");
+                    intent.putExtra(Intent.EXTRA_SUBJECT,"Share");
+                    String shareMessage="https://play.google.com/store/apps/details?id="+BuildConfig.APPLICATION_ID+"\n\n";
+                    intent.putExtra(Intent.EXTRA_TEXT,shareMessage);
+                    startActivity(Intent.createChooser(intent,"Share by"));
+                }
+                catch (Exception e){
+
+                    Toast.makeText(MainActivity.this,"Error Occured",Toast.LENGTH_LONG).show();
+                }
                 break;
             case R.id.navreload:
                 checkconnection();
