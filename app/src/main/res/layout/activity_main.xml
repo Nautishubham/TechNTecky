@@ -20,9 +20,21 @@
     <WebView
         android:id="@+id/mywebview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
 
         />
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-1661062498571958/5863886061">
+    </com.google.android.gms.ads.AdView>
 
     <RelativeLayout
         android:id="@+id/relativelaot"
@@ -33,14 +45,16 @@
             android:id="@+id/noconnectionlogo"
             android:layout_width="match_parent"
             android:layout_height="324dp"
+            android:contentDescription="@string/nointer"
             android:src="@drawable/illustration" />
+
         <TextView
             android:id="@+id/txtnoconnection"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/noconnectionlogo"
             android:gravity="center"
-            android:text="No Internet Connection"
+            android:text="@string/nointer"
             android:textSize="26sp" />
 
         <Button
@@ -51,12 +65,16 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="60dp"
             android:background="#FF5722"
-            android:text="Retry"
+            android:text="@string/retry"
             android:textColor="#ffffff"
             android:textSize="22sp" />
 
 
+
+
+
     </RelativeLayout>
+
 
 
 

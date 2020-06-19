@@ -1,28 +1,18 @@
 package com.techno.techntecky;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.Manifest;
 import android.app.AlertDialog;
-import android.app.DownloadManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.webkit.CookieManager;
-import android.webkit.DownloadListener;
-import android.webkit.URLUtil;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -31,12 +21,22 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.techno.techntecky.services.notificationservice;
 
 import hotchemi.android.rate.AppRate;
 
 public class MainActivity extends AppCompatActivity {
     WebView webView;
+    private AdView mAdView;
+
     private String weburl = "https://linkedgyan.blogspot.com/";
     ProgressBar progressBarweb;
     ProgressDialog progressDialog;
@@ -49,13 +49,24 @@ public class MainActivity extends AppCompatActivity {
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
-        startService( new Intent( this, notificationservice.class )) ;
+
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+
+
+
         webView = findViewById(R.id.mywebview);
+
         progressBarweb = findViewById(R.id.progressbar);
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading please wait...");
         nointernetconnection = findViewById(R.id.btnnoconnection);
-
         relativeLayout = findViewById(R.id.relativelaot);
         webView.getSettings().setJavaScriptEnabled(true);
 
@@ -99,19 +110,23 @@ public class MainActivity extends AppCompatActivity {
                 super.onProgressChanged(view, newProgress);
             }
         });
-        nointernetconnection.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkconnection();
-            }
-        });
+        nointernetconnection.setOnClickListener(v -> checkconnection());
+        startService( new Intent( this, notificationservice.class )) ;
+        noti();
 
     }
+
+    private void noti() {
+        AppRate.with(this).setInstallDays(2).setLaunchTimes(3).setRemindInterval(2).monitor();
+        AppRate.showRateDialogIfMeetsConditions(this);
+    }
+
     @Override
     protected void onStop () {
         super .onStop() ;
         startService( new Intent( this, notificationservice.class )) ;
     }
+
     public void closeApp (View view) {
         finish() ;
     }

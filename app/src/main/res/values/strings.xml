@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">TechNTecky</string>
+    <string name="technteckyll">TechNTeckyLogo</string>
+    <string name="techntecky">TechNTecky</string>
+    <string name="pathofeverytech">Path Of Every Tech</string>
+    <string name="nointer">No Internet Connection</string>
+    <string name="retry">Retry</string>
 </resources>
