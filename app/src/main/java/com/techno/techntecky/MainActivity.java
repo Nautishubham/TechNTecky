@@ -29,6 +29,7 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.techno.techntecky.Activities.LoginActivity;
 import com.techno.techntecky.services.notificationservice;
 
 import hotchemi.android.rate.AppRate;
@@ -184,7 +185,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.navprevious:
-                onBackPressed();
+               Intent i=new Intent(MainActivity.this, LoginActivity.class);
+               startActivity(i);
                 break;
 
             case  R.id.navRate:
