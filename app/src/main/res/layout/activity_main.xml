@@ -20,7 +20,8 @@
     <WebView
         android:id="@+id/mywebview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
 
         />
 
@@ -33,14 +34,16 @@
             android:id="@+id/noconnectionlogo"
             android:layout_width="match_parent"
             android:layout_height="324dp"
+            android:contentDescription="@string/nointer"
             android:src="@drawable/illustration" />
+
         <TextView
             android:id="@+id/txtnoconnection"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/noconnectionlogo"
             android:gravity="center"
-            android:text="No Internet Connection"
+            android:text="@string/nointer"
             android:textSize="26sp" />
 
         <Button
@@ -51,12 +54,16 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="60dp"
             android:background="#FF5722"
-            android:text="Retry"
+            android:text="@string/retry"
             android:textColor="#ffffff"
             android:textSize="22sp" />
 
 
+
+
+
     </RelativeLayout>
+
 
 
 
